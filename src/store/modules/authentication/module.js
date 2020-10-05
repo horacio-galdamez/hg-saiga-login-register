@@ -18,10 +18,10 @@ const getters = {
 const mutations = {
 	[types.SET_TOKEN] (state, params) {
 		state.token = params.id;
-		state.authErrorMsg = null;
 	},
 	[types.SET_USER] (state, params) {
 		state.currentUser = params;
+		state.token = params.token;
 		state.isAuthenticated = true;
 	}
 }

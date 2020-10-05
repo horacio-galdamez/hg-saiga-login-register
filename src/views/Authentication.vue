@@ -1,25 +1,25 @@
 <template>
     <div>
         <template>
-        <v-tabs v-model="tab" class="d-none">
-            <v-tab key="0">
-               Login
-            </v-tab>
+        <v-item-group v-model="tab" class="d-none">
+            <v-item key="0">
+               <login @go-to-registration="tab++"></login>
+            </v-item>
 
-            <v-tab key="1">
-                Register
-            </v-tab>
-        </v-tabs>
+            <v-item key="1">
+                <register @go-to-login="tab--"/>
+            </v-item>
+        </v-item-group>
         </template>
 
-        <v-tabs-items v-model="tab">
-            <v-tab-item>
-                <login />
-            </v-tab-item>
-            <v-tab-item>
-                <register />
-            </v-tab-item>
-        </v-tabs-items>
+        <v-window touchless v-model="tab">
+            <v-window-item>
+                <login @go-to-registration="tab++"></login>
+            </v-window-item>
+            <v-window-item>
+                <register @go-to-login="tab--"/>
+            </v-window-item>
+        </v-window>
     </div>
 </template>
 

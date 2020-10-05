@@ -8,7 +8,7 @@ const Home = () => import('@/views/Home.vue');
 Vue.use(VueRouter);
 
 const checkToken = (to, from, next) => {
-	//Checks the authentication token exists in the browser session
+    //Checks the authentication token exists in the browser session
     if (store.getters.isAuthenticated) {
         return next();
     } else {
@@ -18,11 +18,11 @@ const checkToken = (to, from, next) => {
 
 const checkAuth = (to, from, next) => {
 	
-	//Checks the user is authenticated and assigns it to the vuex store
+    //Checks the user is authenticated and assigns it to the vuex store
     if (localStorage.token && localStorage.userId) {
         try {
-            let res = store.dispatch('getUser', { token: localStorage.token, id: localStorage.userId });
-            if (res && !!res.id) {
+            let res = store.dispatch('getUser', { token: localStorage.token, username: localStorage.userId });
+            if (res && !!res.username) {
                 return next(to.query.redirect ? to.query.redirect : '/');
             } else {
                 return next();

@@ -1,20 +1,14 @@
 import * as types from './mutation-types';
 
-export const getToken = async ({ commit, dispatch }, payload) => {
-    localStorage.setItem('token', payload.apiToken);
-    commit(types.SET_TOKEN, payload);
-    await dispatch('getUser', payload);
-};
-
 export const getUser = ({ commit }, payload) => {
-    localStorage.setItem('userId', payload.id);
-    let user = payload.id;
+    localStorage.setItem('userId', payload.username);
+    let user = payload;
     commit(types.SET_USER, user);
     return user;
 };
 
 export const registerUser = ({ commit, dispatch }, payload) => {
-    localStorage.setItem('token', payload.apiToken);
+    localStorage.setItem('token', payload.token);
     commit(types.SET_TOKEN, payload);    
     dispatch('getUser', payload);
     return 200;

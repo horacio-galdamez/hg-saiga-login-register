@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="flex-display">
     <v-main>
       <router-view />
     </v-main>

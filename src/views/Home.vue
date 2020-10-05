@@ -1,13 +1,17 @@
 <template>
     <div>
-        Home
+        Welcome, {{ currentUser }}
     </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: 'Home',
-        components: {}
+        components: {},
+        computed: {
+            ...mapGetters(['currentUser'])
+        }
     }
 </script>
 
